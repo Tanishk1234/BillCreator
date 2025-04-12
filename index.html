@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jewellery Bill Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- jsPDF for saving as PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  window.jsPDF = window.jspdf.jsPDF;
+</script>
+
+
+</head>
+<body>
+  <!-- HOME HEADER -->
+  <header>
+    <h1>Jewellery Bill Manager</h1>
+    <button id="addShopBtn">+ Add Shop</button>
+  </header>
+
+  <!-- SHOP BUTTONS -->
+  <section id="shopList">
+    <!-- JS will render buttons like: <button class="shop-btn">Daya Jeweller</button> -->
+  </section>
+
+  <!-- SHOP PAGE -->
+  <section id="shopPage" style="display: none;">
+    <header>
+      <h2 id="currentShopName">Shop Name</h2>
+      <div>
+        <button id="addBillBtn">+ Add Bill</button>
+        <button id="backToHome">← Back</button>
+      </div>
+    </header>
+
+    <!-- BILL CARDS LIST -->
+    <div id="billCardsContainer"></div>
+
+    <!-- FOOTER SUMMARY -->
+    <footer>
+      <div id="cashBalance">Cash Balance (Note Down): ₹0.00</div>
+      <div id="silverPending">Silver Left to Collect: 0.00 gm</div>
+    </footer>
+  </section>
+
+  <!-- ADD BILL FORM MODAL -->
+  <div id="billFormModal" style="display: none;">
+    <form id="billForm">
+      <h3>Add New Bill</h3>
+
+      <!-- SECTION 1: Weight Details -->
+      <fieldset>
+        <legend>Weight Details</legend>
+        <label>Gross Weight (gm): <input type="number" step="0.01" id="grossWeight" required></label>
+        <label>Poly Weight (gm): <input type="number" step="0.01" id="polyWeight"></label>
+        <label>Poly Pieces: <input type="number" step="0.01" id="polyPieces"></label>
+        <div>Total Poly Weight: <span id="totalPolyWeight">0.00</span> gm</div>
+        <div>Net Weight: <span id="netWeight">0.00</span> gm</div>
+      </fieldset>
+
+      <!-- SECTION 2: Charges -->
+      <fieldset>
+        <legend>Charges</legend>
+        <label>Tunch (%): <input type="number" step="0.01" id="tunch"></label>
+        <label>Wastage (%): <input type="number" step="0.01" id="wastage"></label>
+        <div>Total Charge (%): <span id="totalCharge">0.00</span></div>
+        <label>Labour Charge per kg (₹): <input type="number" step="0.01" id="labourCharge"></label>
+        
+      </fieldset>
+      
+      <fieldset>
+  <legend>Previous Silver Left</legend>
+  <label>Previous Silver Left to Collect (gm):
+    <input type="number" step="0.01" id="previousPendingInput">
+
+  </label>
+</fieldset>
+      
+      <!-- SECTION 3: Payment Method -->
+      <fieldset>
+        <legend>Payment Method</legend>
+        <label>Select Payment Method (multi-select):
+          <select id="paymentMethod" multiple>
+            <option value="silver">Silver Bar(s)</option>
+            <option value="cash">Cash</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <!-- SECTION 4: Silver Bar Details -->
+      <fieldset id="silverSection" style="display: none;">
+        <legend>Silver Bars</legend>
+        <div id="silverBarsContainer">
+          <!-- Default Silver Bar Row -->
+          <div class="silverBar">
+            <label>Bar No.: <input type="text" class="barNo"></label>
+            <label>Tunch (%): <input type="number" step="0.01" class="barTunch"></label>
+            <label>Weight (gm): <input type="number" step="0.01" class="barWeight"></label>
+          </div>
+        </div>
+        <button type="button" id="addMoreBars">+ Add More Bars</button>
+      </fieldset>
+
+      <!-- SECTION 5: Cash Section -->
+      <fieldset id="cashSection" style="display: none;">
+        <legend>Cash Entries</legend>
+        <div id="cashEntriesContainer">
+          <!-- Default Cash Entry -->
+          <div class="cashEntry">
+            <label>Cash Amount (₹): <input type="number" step="0.01" class="cashAmount"></label>
+            <label>Type:
+              <select class="cashType" multiple>
+                <option value="exchange">Exchange Silver</option>
+                <option value="notedown">Note Down</option>
+              </select>
+            </label>
+            <div class="exchangeRateSection" style="display: none;">
+              <label>Silver Rate per kg (₹): <input type="number" step="0.01" class="silverRate"></label>
+              <div>Silver Fine (gm): <span class="silverFine">0.00</span></div>
+            </div>
+          </div>
+        </div>
+        <button type="button" id="addCashEntry">+ Add Cash</button>
+      </fieldset>
+
+      <!-- SUBMIT BUTTONS -->
+      <div style="margin-top: 20px;">
+        <button type="submit">Create Bill</button>
+        <button type="button" id="cancelBillForm">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

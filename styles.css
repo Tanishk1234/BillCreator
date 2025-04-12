@@ -1,0 +1,241 @@
+/* RESET + BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f2f4f8;
+  color: #222;
+  min-height: 100vh;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* UTILITIES */
+button, input, select {
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  margin-bottom: 20px;
+}
+
+header h1, header h2 {
+  font-size: 22px;
+  color: #333;
+}
+
+header button {
+  padding: 8px 16px;
+  background-color: #4A90E2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+header button:hover {
+  background-color: #357ABD;
+}
+
+/* SHOPS LIST */
+#shopList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.shop-btn {
+  background: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.04);
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.shop-btn:hover {
+  background-color: #f5faff;
+  transform: translateY(-2px);
+}
+
+/* SHOP PAGE */
+#shopPage {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  animation: fadeIn 0.3s ease;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 40px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-top: 2px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #555;
+}
+
+/* BILL FORM MODAL */
+#billFormModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(20, 20, 20, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#billForm {
+  background-color: #ffffff;
+  padding: 25px 30px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 650px;
+  max-height: 90%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: slideUp 0.3s ease;
+}
+
+#billForm h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #333;
+}
+
+#billForm label {
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#billForm input,
+#billForm select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* SECTION BLOCKS */
+#silverSection,
+#cashSection,
+#exchangeSilverSection {
+  background: #f2f6fb;
+  padding: 12px;
+  border-radius: 10px;
+  border-left: 4px solid #4A90E2;
+}
+
+/* BUTTONS IN FORM */
+#billForm button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#billForm button[type="submit"] {
+  background: #4CAF50;
+  color: white;
+}
+#billForm button[type="submit"]:hover {
+  background: #3e8e41;
+}
+
+#cancelBillForm {
+  background: #ccc;
+  color: #333;
+}
+#cancelBillForm:hover {
+  background: #aaa;
+}
+
+#addMoreBars {
+  background-color: #4A90E2;
+  color: #fff;
+  font-size: 13px;
+  border: none;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+#addMoreBars:hover {
+  background-color: #357ABD;
+}
+
+/* BILL CARDS */
+.bill-card {
+  background: #ffffff;
+  border: 1px solid #dfe6ec;
+  border-left: 6px solid #4A90E2;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+}
+
+.bill-card h4 {
+  color: #4A90E2;
+  margin-bottom: 8px;
+}
+
+.bill-card p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.bill-card .modify-btn {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border: none;
+  background-color: #f39c12;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.bill-card .modify-btn:hover {
+  background-color: #d48806;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
