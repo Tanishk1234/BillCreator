@@ -230,14 +230,18 @@ function renderBills() {
       <p><strong>Total Pack W.T.</strong> = ${bill.polyWt}gm × ${bill.polyPcs} = ${bill.totalPoly} gm</p>
       <p><strong>Net W.T.</strong> = ${bill.net.toFixed(2)} gm</p>
       <hr />
-      ${paymentLines}
-      <hr />
-      <p><strong>Fine:</strong> ${bill.netFine.toFixed(2)} gm</p>
+      <p><strong>Tunch:</strong> ${bill.tunchVal}%</p>
+      <p><strong>Wastage:</strong> ${bill.wastageVal}%</p>
+      <p><strong>Fine:</strong> ${bill.net.toFixed(2)} × ${bill.totalChargeVal.toFixed(2)}% = <strong>${bill.netFine.toFixed(2)} gm</strong></p>
       <p><strong>Previous Pending:</strong> ${bill.previousPending} gm</p>
       <p><strong>Total to Collect:</strong> ${bill.totalToCollect.toFixed(2)} gm</p>
       <p><strong>Total Deposited:</strong> ${bill.totalSilverFine.toFixed(2)} gm</p>
       <p><strong>Pending:</strong> ${bill.remainingFine.toFixed(2)} gm</p>
       ${bill.totalCashNotedown ? `<p><strong>₹${bill.totalCashNotedown.toLocaleString()}</strong> noted down</p>` : ''}
+      <hr />
+      <hr />
+      ${paymentLines}
+      <hr />
 
       <!-- ACTION BUTTONS -->
       <div class="bill-actions">
